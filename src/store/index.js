@@ -21,20 +21,20 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    addPost(newTitle, newContent) {
+    addPost(state, payload) {
       let maxId = 0;
+      const title = payload.title;
+      const content = payload.content;
       this.state.posts.forEach(post => {
         if (post.id > maxId) {
           maxId = post.id;
         }
       });
-      this.state.posts = [
-        {
-          id: maxId + 1,
-          title: newTitle,
-          content: newContent
-        }
-      ].concat(this.state.posts);
+      this.state.posts.unshift({
+        id: maxId + 1,
+        title: title,
+        content: content
+      });
     }
   },
   actions: {},

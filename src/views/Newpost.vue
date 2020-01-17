@@ -42,10 +42,12 @@ export default {
   },
   methods: {
     addPost() {
-      this.$store.commit("addPost", {
+      window.console.log(this.newTitle + this.newContent);
+      const newPost = {
         title: this.newTitle,
         content: this.newContent
-      });
+      };
+      this.$store.commit("addPost", newPost);
     }
   }
 };
